@@ -11,7 +11,7 @@ services:
     container_name: frontend-bitcoin-nginx
     image: nginx:1.15-alpine
     volumes:
-      - ./public:/var/www/public
+      - ./dist:/var/www/public
       - ./docker/nginx:/etc/nginx/conf.d
 
 networks:
