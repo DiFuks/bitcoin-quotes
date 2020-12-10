@@ -1,32 +1,39 @@
-import { FC } from 'react';
+import React, { FC, lazy, Suspense } from 'react';
 import styled from 'styled-components';
 
-import { Table } from '@common/components/Table/Table';
+import { Column } from 'react-table';
+
 import { useTickerTableData } from '@features/Quotes/hooks/useTickerTableData';
 import { useColumns } from '@features/Quotes/hooks/useColumns';
+
+const Table = lazy(() => import('@common/components/Table/Table'));
 
 export const Quotes: FC = () => {
   const data = useTickerTableData();
 
   const columns = useColumns();
 
+  const fallback = <div>Loading init information...</div>;
+
   return (
     <SQuotes>
-      <h1>Bitcoin quotes</h1>
-      {data.length === 0 ? (
-        <div>Loading init information...</div>
-      ) : (
-        <Table
-          options={{
-            data,
-            columns,
-            autoResetSortBy: false,
-            initialState: {
-              sortBy: [{ id: 'last', desc: true }],
-            },
-          }}
-        />
-      )}
+      <Suspense fallback={fallback}>
+        <h1>Bitcoin quotes</h1>
+        {data.length === 0 ? (
+          fallback
+        ) : (
+          <Table
+            options={{
+              data,
+              columns: columns as Array<Column<object>>,
+              autoResetSortBy: false,
+              initialState: {
+                sortBy: [{ id: 'last', desc: true }],
+              },
+            }}
+          />
+        )}
+      </Suspense>
     </SQuotes>
   );
 };

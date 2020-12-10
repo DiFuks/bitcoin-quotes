@@ -94,3 +94,5 @@ const STable = styled.table`
     box-shadow: none;
   }
 `;
+
+export { Table as default };

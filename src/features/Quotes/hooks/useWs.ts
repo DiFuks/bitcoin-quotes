@@ -1,11 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo } from 'react';
 
 import { WS_URL } from '@features/Quotes/utils/constants';
 
 export const useWs = (): WebSocket => {
-  const wsRef = useRef(new WebSocket(WS_URL));
+  const socket = useMemo(() => new WebSocket(WS_URL), []);
 
-  useEffect(() => () => wsRef.current.close(), []);
+  useEffect(() => () => socket.close(), [socket]);
 
-  return wsRef.current;
+  return socket;
 };
