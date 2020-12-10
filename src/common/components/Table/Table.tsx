@@ -18,6 +18,7 @@ export const Table: <Data extends object>(
     headerGroups,
     rows,
     prepareRow,
+    setSortBy,
   } = useTable(options, useSortBy);
 
   return (
@@ -26,7 +27,12 @@ export const Table: <Data extends object>(
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+              <th
+                {...column.getHeaderProps(column.getToggleHiddenProps())}
+                onClick={() =>
+                  setSortBy([{ id: column.id, desc: !column.isSortedDesc }])
+                }
+              >
                 {column.render('Header')}
                 <span>
                   {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
