@@ -167,6 +167,13 @@
       }
     ],
     "no-void": ["error", { "allowAsStatement": true }],
-    "jsx-a11y/label-has-associated-control": "off"
+    "jsx-a11y/label-has-associated-control": "off",
+    "@typescript-eslint/ban-types": ["error", {
+      "types": {
+        "{}": false,
+        "object": false
+      }
+    }],
+    "unicorn/no-null": "off"
   }
 }

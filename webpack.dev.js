@@ -20,7 +20,10 @@ module.exports = merge(common, {
       eslint: {
         files: './src/**/*.{ts,tsx}'
       },
+      logger: {
+        devServer: false
+      },
     }),
   ],
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
 });

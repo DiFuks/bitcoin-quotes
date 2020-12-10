@@ -12,6 +12,7 @@
     "jsx": "preserve",
     "sourceMap": true,
     "lib": [
+      "es5",
       "dom"
     ],
     "allowSyntheticDefaultImports": true,
@@ -23,6 +24,12 @@
     "paths": {
       "@app/*": [
         "src/app/*"
+      ],
+      "@common/*": [
+        "src/common/*"
+      ],
+      "@features/*": [
+        "src/features/*"
       ]
     },
     "allowJs": true,
