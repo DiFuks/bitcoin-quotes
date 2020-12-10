@@ -1,5 +1,3 @@
-include .env
-
 nodejsContainerName = frontend-bitcoin-nodejs
 nginxContainerName = frontend-bitcoin-nginx
 
