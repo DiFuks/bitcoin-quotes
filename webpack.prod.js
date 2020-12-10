@@ -20,7 +20,7 @@ module.exports = merge(common, {
       }
     }),
     new ScriptExtHtmlWebpackPlugin({
-      inline: ['client']
+      inline: ['app']
     }),
   ],
   devtool: 'source-map',
